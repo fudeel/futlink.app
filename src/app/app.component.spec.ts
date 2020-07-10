@@ -1,5 +1,9 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFireAnalyticsModule} from '@angular/fire/analytics';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -7,6 +11,11 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      imports: [
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAnalyticsModule,
+        AngularFirestoreModule
+      ]
     }).compileComponents();
   }));
 
