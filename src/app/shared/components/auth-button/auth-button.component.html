@@ -1,1 +1,8 @@
-<p>auth-button works!</p>
+<button [ngClass]="{
+'auth-btn': true,
+'btn': true,
+'mb-4': true,
+'w-100': true,
+'auth-btn-google': (authProvider === 'google'),
+'auth-btn-facebook': (authProvider === 'facebook')
+}">Login with {{authProvider || null}}</button>
