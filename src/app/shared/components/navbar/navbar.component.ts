@@ -7,7 +7,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  @Input() userName: string;
+  @Input() displayName: string;
 
   @Output() logout: EventEmitter<boolean> = new EventEmitter<boolean>();
 

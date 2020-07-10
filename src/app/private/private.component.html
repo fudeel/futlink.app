@@ -1,6 +1,5 @@
-
-<div class="container-fluid">
-  <app-navbar (logout)="onLogout()"></app-navbar>
+<div class="container-fluid" *ngIf="user">
+  <app-navbar (logout)="onLogout()" [displayName]="user.displayName"></app-navbar>
   <div class="container private-router">
     <router-outlet></router-outlet>
   </div>
