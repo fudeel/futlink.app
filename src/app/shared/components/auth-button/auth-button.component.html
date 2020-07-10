@@ -5,4 +5,4 @@
 'w-100': true,
 'auth-btn-google': (authProvider === 'google'),
 'auth-btn-facebook': (authProvider === 'facebook')
-}">Login with {{authProvider || null}}</button>
+}">Login with {{authProvider || '' | titlecase}}</button>
