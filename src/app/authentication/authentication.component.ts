@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {auth} from 'firebase';
 
 @Component({
   selector: 'app-authentication',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthenticationComponent implements OnInit {
 
-  constructor() { }
+  constructor(public fireAuth: AngularFireAuth) { }
 
   ngOnInit(): void {
   }
 
+  loginWithGoogle() {
+    this.fireAuth.signInWithPopup(new auth.GoogleAuthProvider())
+      .then();
+  }
 }
