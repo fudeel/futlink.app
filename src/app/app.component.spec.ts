@@ -4,6 +4,7 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFireAnalyticsModule} from '@angular/fire/analytics';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {SharedModule} from './shared/shared.module';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -14,7 +15,8 @@ describe('AppComponent', () => {
       imports: [
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireAnalyticsModule,
-        AngularFirestoreModule
+        AngularFirestoreModule,
+        SharedModule
       ]
     }).compileComponents();
   }));
