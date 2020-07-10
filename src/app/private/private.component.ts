@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-private',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivateComponent implements OnInit {
 
-  constructor() { }
+  constructor(public fireAuth: AngularFireAuth, private readonly router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  onLogout() {
+    this.fireAuth.signOut().then(() => {
+      this.router.navigate(['authentication']);
+    })
+      .catch(err => {
+        console.log('Error on signin out', err);
+      });
   }
 
 }
