@@ -10,6 +10,10 @@ const routes: Routes = [
     loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
   },
   {
+    path: 'private',
+    loadChildren: () => import('./private/private.module').then(m => m.PrivateModule)
+  },
+  {
     path: '',
     redirectTo: '',
     pathMatch: 'full'
