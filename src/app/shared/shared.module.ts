@@ -4,6 +4,7 @@ import { AuthButtonComponent } from './components/auth-button/auth-button.compon
 import { AreaCardComponent } from './components/area-card/area-card.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {NgbCollapseModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {RouterModule} from '@angular/router';
 
 
 
@@ -22,6 +23,7 @@ import {NgbCollapseModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     NgbModule,
     NgbCollapseModule,
+    RouterModule,
   ]
 })
 export class SharedModule { }
