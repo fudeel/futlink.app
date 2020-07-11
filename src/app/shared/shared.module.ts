@@ -5,15 +5,17 @@ import { AreaCardComponent } from './components/area-card/area-card.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {NgbCollapseModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule} from '@angular/router';
+import { ActivatePositionComponent } from './components/activate-position/activate-position.component';
 
 
 
 @NgModule({
-  declarations: [AuthButtonComponent, AreaCardComponent, NavbarComponent],
+  declarations: [AuthButtonComponent, AreaCardComponent, NavbarComponent, ActivatePositionComponent],
   exports: [
     AuthButtonComponent,
     AreaCardComponent,
     NavbarComponent,
+    ActivatePositionComponent,
 
 
     NgbModule,

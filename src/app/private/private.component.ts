@@ -16,6 +16,7 @@ export class PrivateComponent implements OnInit {
   user: User;
   lat: number;
   lon: number;
+  isPositionError = false;
 
   constructor(public fireAuth: AngularFireAuth,
               private readonly afs: AngularFirestore,
@@ -87,6 +88,8 @@ export class PrivateComponent implements OnInit {
     navigator.geolocation.getCurrentPosition((position) => {
       this.lat =  position.coords.latitude;
       this.lon = position.coords.longitude;
+    }, err => {
+      this.isPositionError = true;
     });
   }
 }

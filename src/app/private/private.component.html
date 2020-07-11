@@ -1,6 +1,11 @@
 <div class="container-fluid" *ngIf="user">
   <app-navbar (logout)="onLogout()" [displayName]="user.displayName"></app-navbar>
   <div class="container private-router">
+    <div class="row">
+      <div class="col-12">
+        <app-activate-position [isPositionError]="isPositionError"></app-activate-position>
+      </div>
+    </div>
     <router-outlet></router-outlet>
   </div>
 </div>
