@@ -11,10 +11,18 @@ const privateRoutes: Routes = [
     component: PrivateComponent,
     children: [
       {
-        path: 'dashboard',
-        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
       },
-      {path: '', redirectTo: 'dashboard', pathMatch: 'full'}
+      {
+        path: 'dashboard',
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
+      },
+      {
+        path: 'friendly',
+        loadChildren: () => import('./friendly/friendly.module').then(m => m.FriendlyModule)
+      }
     ]
   }
 ];
