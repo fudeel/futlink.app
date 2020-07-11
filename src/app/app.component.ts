@@ -9,7 +9,5 @@ import {AngularFirestore} from '@angular/fire/firestore';
 export class AppComponent {
   title = 'futlink';
 
-  constructor(firestore: AngularFirestore) {
-
-  }
+  constructor(firestore: AngularFirestore) {}
 }

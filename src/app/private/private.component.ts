@@ -17,6 +17,7 @@ export class PrivateComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCurrentUserDataAndWriteToSession();
+    this.getCurrentCoordinates();
   }
 
   getCurrentUserDataAndWriteToSession() {
@@ -38,4 +39,10 @@ export class PrivateComponent implements OnInit {
       });
   }
 
+
+  getCurrentCoordinates() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position.coords.latitude, position.coords.longitude);
+    });
+  }
 }
