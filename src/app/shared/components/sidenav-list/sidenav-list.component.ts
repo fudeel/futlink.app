@@ -38,26 +38,7 @@ interface ExampleFlatNode {
 
 const sidenavList: ListWithChildren[] = [
   {name: 'Dashboard', route: 'dashboard', icon: 'dashboard'},
-  {
-    name: 'Gestione',
-    route: 'gestione',
-    children: [
-      {name: 'Numeri', route: 'numeri' },
-      {name: 'Prefissi', route: 'prefissi'},
-      {name: 'Piano numerazione', route: 'piano-numerazione'}
-    ]
-  },
-  {
-    name: 'Gestione Arco',
-    route: 'gestione-arco',
-    children: [
-      {name: 'MSISDN', route: 'msisdn'},
-      {name: 'Numerazione al ministero', route: 'numerazione-al-ministero'},
-      {name: 'Riclico MSISDN', route: 'riciclo-msisdn'},
-    ]
-  },
-  {
-    name: 'Configurazione MVNO',
-    route: 'configurazione-mvno'
-  },
+  {name: 'Friends', route: 'friends', icon: 'supervised_user_circle'},
+  {name: 'Messages', route: 'friends', icon: 'message'},
+  {name: 'Support', route: 'support', icon: 'support_agent'}
 ];
