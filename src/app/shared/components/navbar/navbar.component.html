@@ -1,16 +1,33 @@
-<nav class="navbar navbar-expand-md navbar-light fixed-top bg-white">
-  <a class="navbar-brand font-weight-bolder navbar-logo"><span style="color: #ee5a9b">Fut</span><span style="color: #36bed2">link</span></a>
-  <button class="navbar-toggler d-lg-none" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+<mat-toolbar>
+  <button
+    (click)="drawer.toggle()"
+    *ngIf="isHandset$ | async"
+    aria-label="Toggle sidenav"
+    mat-icon-button
+    type="button">
+    <mat-icon color="primary" aria-label="Side nav toggle icon">menu</mat-icon>
   </button>
-
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngbCollapse]="isCollapsed">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item" [routerLink]="'dashboard'" routerLinkActive="active">
-        <a class="nav-link">Dashboard</a>
-      </li>
-    </ul>
-    <a class="pr-5">Hello {{displayName || '' | titlecase}}</a>
-    <button class="btn fut-btn my-2 my-sm-0" style="background-color: #00120B; color: white" (click)="onLogout()">Logout</button>
+  <div class="row w-100">
+    <div class="col pt-1">{{ currentPage | uppercase }}</div>
+    <div class="col text-right d-inline-block">
+      <button [disabled]="true" mat-icon-button>
+        <mat-icon>settings</mat-icon>
+      </button>
+      <button [matMenuTriggerFor]="auth" mat-icon-button>
+        <mat-icon color="primary">person_outline</mat-icon>
+      </button>
+      <mat-menu #auth="matMenu">
+        <button [disabled]="true" mat-menu-item>
+          <mat-icon>person_outline</mat-icon>
+          <span>Profile</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button (click)="onLogout()" mat-menu-item>
+          <mat-icon color="primary">exit_to_app</mat-icon>
+          <span>Sign out</span>
+        </button>
+      </mat-menu>
+      <span class="secondary-title pointer-cursor w3-green-1 pl-2 pt-1">RAM</span>
+    </div>
   </div>
-</nav>
+</mat-toolbar>

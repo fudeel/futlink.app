@@ -14,39 +14,7 @@
     </div>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar>
-      <button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        type="button">
-        <mat-icon color="primary" aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <div class="row w-100">
-        <div class="col pt-1">{{ currentPage | uppercase }}</div>
-        <div class="col text-right d-inline-block">
-          <button [disabled]="true" mat-icon-button>
-            <mat-icon>settings</mat-icon>
-          </button>
-          <button [matMenuTriggerFor]="auth" mat-icon-button>
-            <mat-icon color="primary">person_outline</mat-icon>
-          </button>
-          <mat-menu #auth="matMenu">
-            <button [disabled]="true" mat-menu-item>
-              <mat-icon>person_outline</mat-icon>
-              <span>Profile</span>
-            </button>
-            <mat-divider></mat-divider>
-            <button (click)="onLogout()" mat-menu-item>
-              <mat-icon color="primary">exit_to_app</mat-icon>
-              <span>Sign out</span>
-            </button>
-          </mat-menu>
-          <span class="secondary-title pointer-cursor w3-green-1 pl-2 pt-1">RAM</span>
-        </div>
-      </div>
-    </mat-toolbar>
+    <app-navbar [drawer]="drawer"></app-navbar>
     <div class="container">
       <router-outlet></router-outlet>
     </div>
