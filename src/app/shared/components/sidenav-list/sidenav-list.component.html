@@ -10,7 +10,8 @@
       </mat-expansion-panel-header>
       <div *ngFor="let c of snl.children">
         <div class="menu-container">
-          <a class="level-2" [routerLink]="c.route" [routerLinkActive]="'selected'">{{c.name}}</a>
+          <a class="level-2" [routerLink]="c.route" [routerLinkActive]="'selected'">{{c.name}}<span><mat-icon color="primary">{{c.icon}}</mat-icon>
+</span></a>
 
         </div>
       </div>
@@ -22,7 +23,10 @@
                          [hideToggle]="true" class="expansion-panel">
       <mat-expansion-panel-header [routerLink]="snl.route" [routerLinkActive]="'selected'">
         <mat-panel-title class="heading-children level-1">
-          {{snl.name}}
+          <div class="row">
+            <div class="col-2"><mat-icon>{{snl.icon}}</mat-icon></div>
+            <div class="col pt-1">{{snl.name}}</div>
+          </div>
         </mat-panel-title>
       </mat-expansion-panel-header>
     </mat-expansion-panel>

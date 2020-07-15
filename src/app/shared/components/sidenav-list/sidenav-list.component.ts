@@ -25,6 +25,7 @@ interface ListWithChildren {
   name: string;
   route: string;
   children?: ListWithChildren[];
+  icon?: string;
 }
 
 
@@ -36,11 +37,11 @@ interface ExampleFlatNode {
 }
 
 const sidenavList: ListWithChildren[] = [
+  {name: 'Dashboard', route: 'dashboard', icon: 'dashboard'},
   {
     name: 'Gestione',
     route: 'gestione',
     children: [
-      {name: 'Dashboard', route: 'dashboard'},
       {name: 'Numeri', route: 'numeri' },
       {name: 'Prefissi', route: 'prefissi'},
       {name: 'Piano numerazione', route: 'piano-numerazione'}
