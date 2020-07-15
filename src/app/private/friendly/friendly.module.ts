@@ -4,6 +4,7 @@ import {FriendlyComponent} from './friendly.component';
 import { StepOneComponent } from './step-one/step-one.component';
 import {RouterModule} from '@angular/router';
 import {FriendlyRoutingModule} from './friendly-routing.module';
+import {SharedModule} from '../../shared/shared.module';
 
 
 
@@ -12,7 +13,8 @@ import {FriendlyRoutingModule} from './friendly-routing.module';
   imports: [
     CommonModule,
     RouterModule,
-    FriendlyRoutingModule
+    FriendlyRoutingModule,
+    SharedModule
   ]
 })
 export class FriendlyModule { }
