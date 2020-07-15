@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {auth} from 'firebase';
 import {Router} from '@angular/router';
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {openSnackBar} from "../shared/misc/misc";
 
 @Component({
   selector: 'app-authentication',
@@ -15,8 +15,7 @@ export class AuthenticationComponent implements OnInit {
 
   constructor(
     public fireAuth: AngularFireAuth,
-    private readonly router: Router,
-    private readonly snackBar: MatSnackBar) { }
+    private readonly router: Router) { }
 
   ngOnInit(): void {
   }
@@ -28,6 +27,7 @@ export class AuthenticationComponent implements OnInit {
           this.isLoading = true;
           this.router.navigate(['private']).then(() => this.isLoading = false)
             .catch(err => {
+
               console.log('Error on logging in: ', err);
             })
         }

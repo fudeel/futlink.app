@@ -1,0 +1,116 @@
+@import '~@angular/material/theming';
+
+@import "src/assets/theme/palette";
+@include mat-core();
+
+/* ======== Angular material custom themes ======== */
+$my-custom-primary: mat-palette($mat-deep-windTre);
+$my-custom-accent: mat-palette($mat-pink, 100, 500, A100);
+$my-custom-warn: mat-palette($mat-lime);
+$my-custom-green: mat-palette($mat-w3-green);
+
+$my-custom-theme: mat-light-theme($my-custom-primary, $my-custom-accent, $my-custom-warn);
+
+@include angular-material-theme($my-custom-theme);
+
+.main-title {
+  .big-title {
+    color: #156064;
+  }
+  .small-title {
+    color: #F8E16C;
+  }
+}
+
+.secondary-title {
+  display: block;
+  float: right;
+
+}
+
+.w3-green-1 {
+  color: #156064;
+}
+
+
+
+// miscellaneous
+.pointer-cursor {
+  cursor: pointer;
+}
+
+
+
+// sidenav left menu
+
+.sidenav-container{
+
+  .menu-container {
+    padding: 0;
+    margin: 0;
+  }
+
+  .selected {
+    color: #0B3132;
+    background: rgba(148, 143, 140, 0.1);
+  }
+
+  .mat-expansion-panel-header {
+    padding-left: 0;
+
+    &:hover {
+      background: rgba(148, 143, 140, 0.1) !important;
+    }
+  }
+
+
+  .mat-expansion-panel-body {
+    padding: 0;
+  }
+
+  .mat-expanded {
+
+    &:hover {
+      color: #401ABF;
+      font-weight: bolder;
+    }
+  }
+
+  .expansion-panel {
+    box-shadow: none;
+
+  }
+
+  .heading-children {
+    visibility: visible;
+    opacity: 1;
+    padding-left: 0;
+    max-height: 4000px;
+    transition: visibility .5s,opacity .5s,max-height .5s;
+    transition-timing-function: ease-in-out;
+  }
+
+  .level-1 {
+    font-family: Roboto,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    padding-left: 20px;
+    margin: 0;
+    transition: background-color .2s;
+    text-transform: uppercase;
+  }
+
+  .level-2 {
+    color: #6e6e6e;
+    font-family: Roboto,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    padding-left: 25px;
+    text-transform: none;
+
+    display: flex;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
