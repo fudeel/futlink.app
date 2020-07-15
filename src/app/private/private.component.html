@@ -1,11 +1,58 @@
-<div class="container-fluid" *ngIf="user">
-  <app-navbar (logout)="onLogout()" [displayName]="user.displayName"></app-navbar>
-  <div class="container private-router">
-    <div class="row">
-      <div class="col-12">
-        <app-activate-position [isPositionError]="isPositionError"></app-activate-position>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false"
+               class="sidenav"
+               fixedInViewport>
+
+    <mat-nav-list>
+      <div class="row px-2 mx-0 pb-2">
+        <div class="col text-center">
+          <app-image [imageUrl]="'assets/logo/windtre-logo-dsk.png'" [imageDescriptionAlt]="'WindTre main Logo'"></app-image>
+        </div>
       </div>
+    </mat-nav-list>
+    <div class="pt-5">
+      <app-sidenav-list></app-sidenav-list>
     </div>
-    <router-outlet></router-outlet>
-  </div>
-</div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        type="button">
+        <mat-icon color="primary" aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div class="row w-100">
+        <div class="col pt-1">{{ currentPage | uppercase }}</div>
+        <div class="col text-right d-inline-block">
+          <button [disabled]="true" mat-icon-button>
+            <mat-icon>settings</mat-icon>
+          </button>
+          <button [matMenuTriggerFor]="auth" mat-icon-button>
+            <mat-icon color="primary">person_outline</mat-icon>
+          </button>
+          <mat-menu #auth="matMenu">
+            <button [disabled]="true" mat-menu-item>
+              <mat-icon>person_outline</mat-icon>
+              <span>Profile</span>
+            </button>
+            <mat-divider></mat-divider>
+            <button (click)="onLogout()" mat-menu-item>
+              <mat-icon color="primary">exit_to_app</mat-icon>
+              <span>Sign out</span>
+            </button>
+          </mat-menu>
+          <span class="secondary-title pointer-cursor w3-green-1 pl-2 pt-1">RAM</span>
+        </div>
+      </div>
+    </mat-toolbar>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<app-loading-overlay *ngIf="isLoading"></app-loading-overlay>

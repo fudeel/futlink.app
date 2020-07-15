@@ -1,0 +1,30 @@
+<ng-container *ngFor="let snl of sidenavList">
+  <div *ngIf="snl.children">
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false"
+                         class="expansion-panel">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="heading-children level-1">
+          {{snl.name}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div *ngFor="let c of snl.children">
+        <div class="menu-container">
+          <a class="level-2" [routerLink]="c.route" [routerLinkActive]="'selected'">{{c.name}}</a>
+
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </div>
+  <div *ngIf="!snl.children">
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false"
+                         [hideToggle]="true" class="expansion-panel">
+      <mat-expansion-panel-header [routerLink]="snl.route" [routerLinkActive]="'selected'">
+        <mat-panel-title class="heading-children level-1">
+          {{snl.name}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+  </div>
+</ng-container>

@@ -5,6 +5,8 @@ import {User} from 'firebase';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Coordinates, FutUser} from '../shared/models/FutUser';
 import {Observable} from 'rxjs';
+import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
+import {map, shareReplay} from "rxjs/operators";
 
 @Component({
   selector: 'app-private',
@@ -18,7 +20,18 @@ export class PrivateComponent implements OnInit {
   lon: number;
   isPositionError = false;
 
-  constructor(public fireAuth: AngularFireAuth,
+  isLoading = false;
+  currentPage = '';
+  currentUser = '';
+
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
+
+  constructor(private breakpointObserver: BreakpointObserver,
+              public fireAuth: AngularFireAuth,
               private readonly afs: AngularFirestore,
               private readonly router: Router) { }
 
