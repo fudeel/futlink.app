@@ -6,9 +6,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import {NgbCollapseModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule} from '@angular/router';
 import { ActivatePositionComponent } from './components/activate-position/activate-position.component';
-import { BigIconBtnComponent } from './big-icon-btn/big-icon-btn.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {LoadingOverlayComponent} from "./loading-overlay/loading-overlay.component";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSidenavModule} from "@angular/material/sidenav";
@@ -26,8 +24,10 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatTreeModule} from "@angular/material/tree";
 import {MatExpansionModule} from "@angular/material/expansion";
-import {SidenavListComponent} from "./sidenav-list/sidenav-list.component";
-import {ImageComponent} from "./image/image.component";
+import {BigIconBtnComponent} from "./components/big-icon-btn/big-icon-btn.component";
+import {LoadingOverlayComponent} from "./components/loading-overlay/loading-overlay.component";
+import {SidenavListComponent} from "./components/sidenav-list/sidenav-list.component";
+import {ImageComponent} from "./components/image/image.component";
 
 
 
