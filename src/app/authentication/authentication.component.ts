@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {auth} from 'firebase';
 import {Router} from '@angular/router';
@@ -39,6 +39,24 @@ export class AuthenticationComponent implements OnInit {
       });
   }
 
+
+  loginWithFacebook() {
+    this.fireAuth.signInWithPopup(new auth.FacebookAuthProvider())
+      .then(
+        () => {
+          this.isLoading = true;
+          this.router.navigate(['private']).then(() => this.isLoading = false)
+            .catch(err => {
+              this.isLoading = false
+              this.openSnackBar(err.toString(), 'Close');
+              console.log('Error on logging in: ', err);
+            })
+        }
+      )
+      .catch(err => {
+        console.log('Error on Authentication: ', err);
+      });
+  }
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
