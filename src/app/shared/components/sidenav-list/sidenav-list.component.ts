@@ -24,6 +24,7 @@ export class SidenavListComponent implements OnInit {
 interface ListWithChildren {
   name: string;
   route: string;
+  disabled: boolean;
   children?: ListWithChildren[];
   icon?: string;
 }
@@ -37,8 +38,8 @@ interface ExampleFlatNode {
 }
 
 const sidenavList: ListWithChildren[] = [
-  {name: 'Dashboard', route: 'dashboard', icon: 'dashboard'},
-  {name: 'Friends', route: 'friends', icon: 'supervised_user_circle'},
-  {name: 'Messages', route: 'friends', icon: 'message'},
-  {name: 'Support', route: 'support', icon: 'support_agent'}
+  {name: 'Dashboard', route: 'dashboard', disabled: false, icon: 'dashboard'},
+  {name: 'Friends', route: 'friends', disabled: true, icon: 'supervised_user_circle'},
+  {name: 'Messages', route: 'friends', disabled: true, icon: 'message'},
+  {name: 'Support', route: 'support', disabled: true, icon: 'support_agent'}
 ];

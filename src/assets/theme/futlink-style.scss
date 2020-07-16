@@ -114,3 +114,13 @@ $my-custom-theme: mat-light-theme($my-custom-primary, $my-custom-accent, $my-cus
     padding-bottom: 12px;
   }
 }
+
+mat-sidenav-content.mat-drawer-content.mat-sidenav-content {
+  background-color: white !important;
+}
+
+
+// navbar toolbar
+mat-toolbar.mat-toolbar.mat-toolbar-single-row {
+  background: white !important;
+}

@@ -5,7 +5,7 @@
     aria-label="Toggle sidenav"
     mat-icon-button
     type="button">
-    <mat-icon color="primary" aria-label="Side nav toggle icon">menu</mat-icon>
+    <mat-icon aria-label="Side nav toggle icon" color="primary" style="color: #117B8C">menu</mat-icon>
   </button>
   <div class="row w-100">
     <div class="col pt-1">{{ currentPage | uppercase }}</div>
@@ -14,7 +14,7 @@
         <mat-icon>settings</mat-icon>
       </button>
       <button [matMenuTriggerFor]="auth" mat-icon-button>
-        <mat-icon color="primary">person_outline</mat-icon>
+        <mat-icon color="primary" style="color: #117B8C">person_outline</mat-icon>
       </button>
       <mat-menu #auth="matMenu">
         <button [disabled]="true" mat-menu-item>
@@ -22,8 +22,8 @@
           <span>Profile</span>
         </button>
         <mat-divider></mat-divider>
-        <button (click)="onLogout()" mat-menu-item>
-          <mat-icon color="primary">exit_to_app</mat-icon>
+        <button (click)="onLogout()" mat-menu-item style="color: #117B8C">
+          <mat-icon color="primary" style="color: #117B8C">exit_to_app</mat-icon>
           <span>Sign out</span>
         </button>
       </mat-menu>
