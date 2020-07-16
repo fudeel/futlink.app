@@ -1,0 +1,14 @@
+.selected {
+  background-color: #E51E7B !important;
+
+  div {
+    color: white !important;
+  }
+}
+
+.sidenav-li {
+  &:hover {
+    background-color: #F49FC7 !important;
+    color: black !important;
+  }
+}

@@ -6,6 +6,8 @@ describe('ActivatePositionComponent', () => {
   let component: ActivatePositionComponent;
   let fixture: ComponentFixture<ActivatePositionComponent>;
 
+  let user
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ActivatePositionComponent ]

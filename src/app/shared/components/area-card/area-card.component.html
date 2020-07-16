@@ -1,6 +1,17 @@
-<div class="card fut-card mw-100">
-  <img [src]="imageSource" class="card-img-top" [alt]="imageAlt">
-  <div class="card-body paragraph">
-    <p class="card-text">{{cardParagraphContent}}</p>
-  </div>
-</div>
+<mat-card class="fut-area-card">
+  <mat-card-header>
+    <mat-card-title style="color: #00120B">{{cardTitle}}</mat-card-title>
+    <mat-card-subtitle>{{cardSubTitle}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="px-2">
+    <p>{{cardParagraphContent}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="row">
+      <div class="col-12">
+        <app-area-card-btn *ngIf="buttonText" [buttonText]="buttonText" [routeTo]="routeTo"
+                           style="position: relative; float:right"></app-area-card-btn>
+      </div>
+    </div>
+  </mat-card-actions>
+</mat-card>

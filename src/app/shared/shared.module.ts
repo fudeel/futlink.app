@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AuthButtonComponent } from './components/auth-button/auth-button.component';
-import { AreaCardComponent } from './components/area-card/area-card.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {AuthButtonComponent} from './components/auth-button/auth-button.component';
+import {AreaCardComponent} from './components/area-card/area-card.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
 import {NgbCollapseModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule} from '@angular/router';
-import { ActivatePositionComponent } from './components/activate-position/activate-position.component';
+import {ActivatePositionComponent} from './components/activate-position/activate-position.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
@@ -28,7 +28,7 @@ import {BigIconBtnComponent} from "./components/big-icon-btn/big-icon-btn.compon
 import {LoadingOverlayComponent} from "./components/loading-overlay/loading-overlay.component";
 import {SidenavListComponent} from "./components/sidenav-list/sidenav-list.component";
 import {ImageComponent} from "./components/image/image.component";
-
+import {AreaCardBtnComponent} from './components/area-card/area-card-btn/area-card-btn.component';
 
 
 @NgModule({
@@ -40,6 +40,7 @@ import {ImageComponent} from "./components/image/image.component";
     LoadingOverlayComponent,
     SidenavListComponent,
     ImageComponent,
+    AreaCardBtnComponent,
   ],
   exports: [
     AuthButtonComponent,
