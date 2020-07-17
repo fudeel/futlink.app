@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-activate-position',
@@ -9,9 +9,16 @@ export class ActivatePositionComponent implements OnInit {
 
   @Input() isPositionError: boolean;
 
-  constructor() { }
+  @Output() isActivatePosition: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  onActivatePosition() {
+    this.isActivatePosition.emit(true);
   }
 
 }
