@@ -3,7 +3,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {auth, User} from 'firebase';
 import {Router} from '@angular/router';
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {Coordinates, FutUser} from "../shared/models/FutUser";
+import {FutUser} from "../shared/models/FutUser";
 import {AngularFirestore} from "@angular/fire/firestore";
 
 @Component({
@@ -89,9 +89,9 @@ export class AuthenticationComponent implements OnInit {
   checkIfUserExistOnDb(user) {
     this.afs.collection('users').doc(user.uid).valueChanges().subscribe(res => {
       if (res) {
-        this.updateUserCoordinatesOnDb(user);
+        this.getCurrentUserAndUpdateLocalStorage(user);
       } else {
-        this.getCurrentUserAndWriteDataOnDbFirstTimeLogin(user);
+        this.getCurrentUserAndWriteDataOnDbFirstTimeLoginAndUpdateLocalStorage(user);
       }
     }, error => {
     }, () => {
@@ -100,7 +100,7 @@ export class AuthenticationComponent implements OnInit {
   }
 
 
-  getCurrentUserAndWriteDataOnDbFirstTimeLogin(user: User) {
+  getCurrentUserAndWriteDataOnDbFirstTimeLoginAndUpdateLocalStorage(user: User) {
     const futUser: FutUser = {
       uuid: user.uid,
       email: user.email,
@@ -114,29 +114,22 @@ export class AuthenticationComponent implements OnInit {
     };
 
     this.afs.collection('users').doc(user.uid).set(futUser).then(() => {
+      localStorage.setItem('userLocalStorage', JSON.stringify(user));
       this.routeToPrivate();
     });
   }
 
 
-  updateUserCoordinatesOnDb(user) {
-    const coordinates: Coordinates = {
-      lat: this.lat,
-      lon: this.lon
-    };
-    this.afs.collection('users').doc(user.uid).update({coordinates}).then(() => {
-      this.routeToPrivate();
-    });
-  }
+  getCurrentUserAndUpdateLocalStorage(user) {
+    this.fireAuth.authState.subscribe(
+      (res) => {
+        localStorage.setItem('userLocalStorage', JSON.stringify(user));
+        this.routeToPrivate();
+      }, error => {
+      }, () => {
 
-
-  getCurrentCoordinates() {
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.lat = position.coords.latitude;
-      this.lon = position.coords.longitude;
-    }, err => {
-      this.isPositionError = true;
-    });
+      }
+    )
   }
 
   routeToPrivate() {

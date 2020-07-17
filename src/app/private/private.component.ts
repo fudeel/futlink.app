@@ -38,5 +38,4 @@ export class PrivateComponent implements OnInit {
         console.log('Error on signin out', err);
       });
   }
-
 }

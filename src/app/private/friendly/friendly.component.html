@@ -1,3 +1,4 @@
-<app-activate-position (isActivatePosition)="onActivatePosition()" [isPositionError]="true"></app-activate-position>
+<app-activate-position (isActivatePosition)="onActivatePosition()"
+                       [isPositionError]="isPositionError"></app-activate-position>
 <app-step-one *ngIf="!isStepOneCompleted"></app-step-one>
 <app-big-icon-btn [icon]="'search'" [text]="'Confirm and Search'" [futYellow]="true"></app-big-icon-btn>

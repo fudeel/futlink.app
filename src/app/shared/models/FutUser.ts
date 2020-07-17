@@ -4,10 +4,10 @@ export class FutUser {
   email: string;
   elo: number;
 
-  coordinates: Coordinates;
+  coordinates?: FutCoordinates;
 }
 
-export class Coordinates {
+export class FutCoordinates {
   lon: number;
   lat: number;
 }
