@@ -32,29 +32,35 @@ export class AuthenticationComponent implements OnInit {
   }
 
   loginWithGoogle() {
+    this.isLoading = true;
     this.fireAuth.signInWithPopup(new auth.GoogleAuthProvider())
       .then(
         () => {
-          this.isLoading = true;
           this.getCurrentUserDataAndWriteToSession();
         }
       )
       .catch(err => {
-        console.log('Error on Authentication: ', err);
+        this.errorHandler(err);
+      })
+      .finally(() => {
+        console.log('Done');
       });
   }
 
 
   loginWithFacebook() {
+    this.isLoading = true;
     this.fireAuth.signInWithPopup(new auth.FacebookAuthProvider())
       .then(
         () => {
-          this.isLoading = true;
           this.getCurrentUserDataAndWriteToSession();
         }
       )
       .catch(err => {
-        console.log('Error on Authentication: ', err);
+        this.errorHandler(err);
+      })
+      .finally(() => {
+        console.log('Done');
       });
   }
 
@@ -87,6 +93,9 @@ export class AuthenticationComponent implements OnInit {
       } else {
         this.getCurrentUserAndWriteDataOnDbFirstTimeLogin(user);
       }
+    }, error => {
+    }, () => {
+      console.log('Done')
     });
   }
 
@@ -105,12 +114,7 @@ export class AuthenticationComponent implements OnInit {
     };
 
     this.afs.collection('users').doc(user.uid).set(futUser).then(() => {
-      this.router.navigate(['private']).then(() => this.isLoading = false)
-        .catch(err => {
-          this.isLoading = false
-          this.openSnackBar(err.toString(), 'Close');
-          console.log('Error on logging in: ', err);
-        })
+      this.routeToPrivate();
     });
   }
 
@@ -121,12 +125,7 @@ export class AuthenticationComponent implements OnInit {
       lon: this.lon
     };
     this.afs.collection('users').doc(user.uid).update({coordinates}).then(() => {
-      this.router.navigate(['private']).then(() => this.isLoading = false)
-        .catch(err => {
-          this.isLoading = false
-          this.openSnackBar(err.toString(), 'Close');
-          console.log('Error on logging in: ', err);
-        })
+      this.routeToPrivate();
     });
   }
 
@@ -138,5 +137,20 @@ export class AuthenticationComponent implements OnInit {
     }, err => {
       this.isPositionError = true;
     });
+  }
+
+  routeToPrivate() {
+    this.router.navigate(['private']).then(() => this.isLoading = false)
+      .catch(err => {
+        this.isLoading = false
+        this.openSnackBar(err.toString(), 'Close');
+        console.log('Error on logging in: ', err);
+      })
+  }
+
+  errorHandler(err) {
+    console.log('Error on Authentication: ', err);
+    this.openSnackBar(err.toString(), 'Close');
+    this.isLoading = false;
   }
 }
