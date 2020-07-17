@@ -25,8 +25,6 @@ export class FriendlyComponent implements OnInit {
       this.lat = position.coords.latitude;
       this.lon = position.coords.longitude;
 
-      this.afs.doc()
-
     }, err => {
       this.isPositionError = true;
     });
