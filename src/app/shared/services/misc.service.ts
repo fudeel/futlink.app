@@ -18,7 +18,7 @@ export class MiscService {
 
 
   getInfoFromIp(ip) {
-    return this.httpClient.get('https://ipapi.co/json/');
+    return this.httpClient.get<any>('https://api.ipgeolocationapi.com/geolocate/' + ip);
   }
 
 }
