@@ -1,12 +1,30 @@
-<div class="alert alert-danger" role="alert" *ngIf="isPositionError">
-  <p class="font-weight-bolder">Please, enable position on your device and Refresh the page.</p>
-  <p>In order to find ranked or friendly match, you need to activate the position of your Web / phone device.</p>
-  <div class="row ">
-    <div class="col-12 d-flex justify-content-end">
-      <button (click)="onActivatePosition()" color="accent" mat-raised-button style="position:relative;">
-        <mat-icon>gps_fixed</mat-icon>
-        Activate position
-      </button>
+<div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="isPositionError">
+  <p class="font-weight-bolder">Please, if you want to use all the functionalities enable the position on your device and Refresh the page.</p>
+  <p>In order to get a better quality filter to find ranked or friendly match, you need to activate the position of your Web / phone device.</p>
+  <p>Choose one of the options below to learn how to Enable your position if you blocked it.</p>
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-md-6 col-lg-4 my-2 d-flex justify-content-center">
+        <button  (click)="onActivatePosition('chrome')" color="link" mat-raised-button style="position:relative;">
+          <fa-icon [icon]="faChrome"></fa-icon>
+          Enable position on Chrome
+        </button>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 my-2 d-flex justify-content-center">
+        <button (click)="onActivatePosition('safari')" color="link" mat-raised-button style="position:relative;">
+          <fa-icon [icon]="faSafari"></fa-icon>
+          Enable position on Safari
+        </button>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 my-2 d-flex justify-content-center">
+        <button (click)="onActivatePosition('edge')" color="link" mat-raised-button style="position:relative;">
+          <fa-icon [icon]="faEdge"></fa-icon>
+          Enable position on Edge
+        </button>
+      </div>
     </div>
   </div>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>
