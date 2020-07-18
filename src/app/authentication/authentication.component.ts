@@ -2,9 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {auth, User} from 'firebase';
 import {Router} from '@angular/router';
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {FutUser} from "../shared/models/FutUser";
-import {AngularFirestore} from "@angular/fire/firestore";
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {FutUser} from '../shared/models/FutUser';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {MiscService} from '../shared/services/misc.service';
 
 @Component({
   selector: 'app-authentication',
@@ -14,21 +15,25 @@ import {AngularFirestore} from "@angular/fire/firestore";
 export class AuthenticationComponent implements OnInit {
 
   user: User;
-  lat: number = 0
-  lon: number = 0
+  lat = 0;
+  lon = 0;
   isPositionError = false;
   currentUser = '';
 
   isLoading = false;
 
+  userIp = '';
+
   constructor(
     public fireAuth: AngularFireAuth,
     private readonly afs: AngularFirestore,
     private readonly router: Router,
-    private readonly snackBar: MatSnackBar) {
+    private readonly snackBar: MatSnackBar,
+    private readonly miscService: MiscService) {
   }
 
   ngOnInit(): void {
+    this.getIpAddress();
   }
 
   loginWithGoogle() {
@@ -79,7 +84,7 @@ export class AuthenticationComponent implements OnInit {
         this.checkIfUserExistOnDb(this.user);
       }, error => {
       }, () => {
-        console.log('User subscription complete')
+        console.log('User subscription complete');
       }
     );
 
@@ -95,7 +100,7 @@ export class AuthenticationComponent implements OnInit {
       }
     }, error => {
     }, () => {
-      console.log('Done')
+      console.log('Done');
     });
   }
 
@@ -129,21 +134,28 @@ export class AuthenticationComponent implements OnInit {
       }, () => {
 
       }
-    )
+    );
   }
 
   routeToPrivate() {
     this.router.navigate(['private']).then(() => this.isLoading = false)
       .catch(err => {
-        this.isLoading = false
+        this.isLoading = false;
         this.openSnackBar(err.toString(), 'Close');
         console.log('Error on logging in: ', err);
-      })
+      });
   }
 
   errorHandler(err) {
     console.log('Error on Authentication: ', err);
     this.openSnackBar(err.toString(), 'Close');
     this.isLoading = false;
+  }
+
+
+  getIpAddress() {
+    this.miscService.getPublicIp().then(ip => {
+      this.userIp = ip;
+    });
   }
 }

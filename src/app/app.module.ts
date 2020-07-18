@@ -12,6 +12,7 @@ import {SharedModule} from './shared/shared.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {APP_BASE_HREF} from "@angular/common";
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {APP_BASE_HREF} from "@angular/common";
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
