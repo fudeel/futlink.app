@@ -29,6 +29,7 @@ import {LoadingOverlayComponent} from "./components/loading-overlay/loading-over
 import {SidenavListComponent} from "./components/sidenav-list/sidenav-list.component";
 import {ImageComponent} from "./components/image/image.component";
 import {AreaCardBtnComponent} from './components/area-card/area-card-btn/area-card-btn.component';
+import {AgmCoreModule} from "@agm/core";
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import {AreaCardBtnComponent} from './components/area-card/area-card-btn/area-ca
   ],
   exports: [
     AuthButtonComponent,
+    AgmCoreModule,
     AreaCardComponent,
     NavbarComponent,
     ActivatePositionComponent,
@@ -86,6 +88,9 @@ import {AreaCardBtnComponent} from './components/area-card/area-card-btn/area-ca
   ],
   imports: [
     CommonModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyA5T3d95i0ypvMNAMLa2gJG-rS5jAsIrkY'
+    }),
     NgbModule,
     NgbCollapseModule,
     RouterModule,

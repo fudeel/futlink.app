@@ -34,6 +34,7 @@ export class AuthenticationComponent implements OnInit {
 
   ngOnInit(): void {
     this.getIpAddress();
+    this.getGeoLocation();
   }
 
   loginWithGoogle() {
@@ -157,5 +158,10 @@ export class AuthenticationComponent implements OnInit {
     this.miscService.getPublicIp().then(ip => {
       this.userIp = ip;
     });
+  }
+
+
+  getGeoLocation() {
+
   }
 }
