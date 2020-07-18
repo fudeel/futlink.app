@@ -11,6 +11,7 @@ export class ActivatePositionComponent implements OnInit {
   @Input() isPositionError: boolean;
 
   @Output() isActivatePosition: EventEmitter<string> = new EventEmitter<string>();
+  @Output() isPositionAlertClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 
   faChrome = faChrome;
@@ -26,6 +27,10 @@ export class ActivatePositionComponent implements OnInit {
 
   onActivatePosition(browser: string) {
     this.isActivatePosition.emit(browser);
+  }
+
+  onClosePositionAlert() {
+    this.isPositionAlertClosed.emit(true);
   }
 
 }

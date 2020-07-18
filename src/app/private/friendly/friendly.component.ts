@@ -14,6 +14,7 @@ export class FriendlyComponent implements OnInit {
   lat = 0;
   lon = 0;
   isPositionError = false;
+  isPositionAlertClosed = false;
 
   constructor(private readonly fireAuth: AngularFireAuth, private readonly afs: AngularFirestore) {
   }
@@ -70,6 +71,11 @@ export class FriendlyComponent implements OnInit {
       console.log('position disabled');
       this.isPositionError = true;
     });
+  }
+
+  onPositionAlertClosed(isClosed: boolean) {
+    this.isPositionError = false;
+    this.isPositionAlertClosed = isClosed;
   }
 
 }
