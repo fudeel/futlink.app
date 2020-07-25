@@ -157,6 +157,20 @@ export class AuthenticationComponent implements OnInit {
   getIpAddress() {
     this.miscService.getPublicIp().then(ip => {
       this.userIp = ip;
+
+      this.miscService.getInfoFromIp(ip).subscribe(res => {
+
+        console.log('Res: ', res);
+
+
+        this.lat = res.geo.latitude;
+        this.lon = res.geo.longitude;
+
+        console.log( {
+          lat: this.lat,
+          lon: this.lon
+        });
+      });
     });
   }
 
