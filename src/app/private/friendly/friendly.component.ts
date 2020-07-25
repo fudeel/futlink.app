@@ -13,6 +13,7 @@ export class FriendlyComponent implements OnInit {
   isStepOneCompleted = false;
   lat = 0;
   lon = 0;
+  showGoogleMaps = false;
   isPositionError = false;
   isPositionAlertClosed = false;
 
@@ -63,6 +64,7 @@ export class FriendlyComponent implements OnInit {
       this.lat = position.coords.latitude;
       this.lon = position.coords.longitude;
       this.isPositionError = false;
+      this.showGoogleMaps = true;
 
 
       this.refreshUserData();
@@ -70,6 +72,7 @@ export class FriendlyComponent implements OnInit {
     }, err => {
       console.log('position disabled');
       this.isPositionError = true;
+      this.showGoogleMaps = false;
     });
   }
 

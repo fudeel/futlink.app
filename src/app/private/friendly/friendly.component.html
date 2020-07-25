@@ -1,4 +1,4 @@
-<agm-map [latitude]="lat" [longitude]="lon">
+<agm-map *ngIf="showGoogleMaps" [latitude]="lat" [longitude]="lon">
   <agm-marker [latitude]="lat" [longitude]="lon"></agm-marker>
 </agm-map>
 <app-activate-position *ngIf="isPositionError || !isPositionAlertClosed"
