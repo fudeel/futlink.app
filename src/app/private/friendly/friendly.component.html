@@ -1,5 +1,13 @@
-<agm-map *ngIf="showGoogleMaps" [latitude]="lat" [longitude]="lon">
-  <agm-marker (markerClick)="openDialog()" [latitude]="lat" [longitude]="lon"></agm-marker>
+<agm-map *ngIf="showGoogleMaps" [latitude]="lat" [longitude]="lon" [zoom]="12">
+  <agm-marker #marker (dragEnd)="markerChange(marker, $event)" (markerClick)="openDialog()" [animation]="'DROP'"
+              [latitude]="lat"
+              [longitude]="lon" [markerDraggable]="true"></agm-marker>
+  <agm-circle [circleDraggable]="false" [editable]="true"
+              [fillColor]="'green'"
+              [latitude]="lat"
+              [longitude]="lon"
+              [radius]="5000">
+  </agm-circle>
 </agm-map>
 <app-activate-position *ngIf="isPositionError || !isPositionAlertClosed"
                        (isActivatePosition)="onActivatePosition($event)"

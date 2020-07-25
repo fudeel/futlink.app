@@ -99,5 +99,8 @@ export class FriendlyComponent implements OnInit {
     });
   }
 
+  markerChange(m, event) {
 
+    console.log(m.lat)
+  }
 }
