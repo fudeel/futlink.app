@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {FutCoordinates} from '../../shared/models/FutUser';
+import {MatDialog} from "@angular/material/dialog";
+import {MarkerPopupComponent} from "../../shared/components/marker-popup/marker-popup.component";
 
 @Component({
   selector: 'app-friendly',
@@ -17,7 +19,7 @@ export class FriendlyComponent implements OnInit {
   isPositionError = false;
   isPositionAlertClosed = false;
 
-  constructor(private readonly fireAuth: AngularFireAuth, private readonly afs: AngularFirestore) {
+  constructor(private readonly fireAuth: AngularFireAuth, private readonly afs: AngularFirestore, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -80,5 +82,22 @@ export class FriendlyComponent implements OnInit {
     this.isPositionError = false;
     this.isPositionAlertClosed = isClosed;
   }
+
+  getCurrentMarkerInfo(event: Event) {
+    console.log('Clicked on: ', event);
+  }
+
+
+  openDialog() {
+    const dialogRef = this.dialog.open(MarkerPopupComponent, {
+      data: {name: 'You'}
+    });
+
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
 
 }

@@ -30,6 +30,8 @@ import {SidenavListComponent} from "./components/sidenav-list/sidenav-list.compo
 import {ImageComponent} from "./components/image/image.component";
 import {AreaCardBtnComponent} from './components/area-card/area-card-btn/area-card-btn.component';
 import {AgmCoreModule} from "@agm/core";
+import {MarkerPopupComponent} from './components/marker-popup/marker-popup.component';
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -42,6 +44,7 @@ import {AgmCoreModule} from "@agm/core";
     SidenavListComponent,
     ImageComponent,
     AreaCardBtnComponent,
+    MarkerPopupComponent,
   ],
   exports: [
     AuthButtonComponent,
@@ -78,8 +81,7 @@ import {AgmCoreModule} from "@agm/core";
     MatMenuModule,
     MatTreeModule,
     MatExpansionModule,
-
-
+    MatDialogModule,
 
 
     NgbModule,
@@ -119,7 +121,11 @@ import {AgmCoreModule} from "@agm/core";
     MatMenuModule,
     RouterModule,
     MatTreeModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule
+  ],
+  providers: [
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ]
 })
 export class SharedModule { }
